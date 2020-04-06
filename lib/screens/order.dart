@@ -12,27 +12,35 @@ class OrderScreen extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.fromLTRB(20.0, 15, 25.0, 20.0),
+            padding: const EdgeInsets.fromLTRB(20.0, 15.0, 25.0, 20.0),
             child: Column(
               children: <Widget>[
+                //heading goes here
                 Row(
                   children: <Widget>[
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
+                    GestureDetector(
+                      child: Icon(
                         Icons.arrow_back_ios,
                         color: kFaded,
                         size: 20,
                       ),
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
                     ),
+                    XMargin(20),
                     Text(
                       'Your Orders',
                       style: tStyle(size: 28, color: kPrimaryColor, weight: 7),
                     ),
                   ],
                   crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                 ),
-                YMargin(20),
+
+                YMargin(60),
+
+                // cart item 1
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -66,7 +74,10 @@ class OrderScreen extends StatelessWidget {
                     )
                   ],
                 ),
+
                 YMargin(20),
+
+                // cart item 2
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -100,7 +111,10 @@ class OrderScreen extends StatelessWidget {
                     )
                   ],
                 ),
+
                 YMargin(20),
+
+                // cart item 3
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -135,11 +149,16 @@ class OrderScreen extends StatelessWidget {
                     )
                   ],
                 ),
+
                 YMargin(20),
+
                 Divider(
                   color: kPrimaryColor,
                 ),
+
                 YMargin(15),
+
+                // total item in cart is here
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -153,14 +172,19 @@ class OrderScreen extends StatelessWidget {
                     )
                   ],
                 ),
+
                 YMargin(15),
+
                 Divider(
                   color: kPrimaryColor,
                   thickness: 1,
                 ),
+
                 YMargin(35),
+
+                // proceed to checkout container
                 Container(
-                  height: 60,
+                  height: 65,
                   width: screenWidth(context),
                   child: Row(
                     children: <Widget>[
@@ -189,6 +213,8 @@ class OrderScreen extends StatelessWidget {
                           },
                         ),
                       ),
+
+                      // total price container
                       Container(
                         width: screenWidth(context) * 0.4,
                         decoration: BoxDecoration(

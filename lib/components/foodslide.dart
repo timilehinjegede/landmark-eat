@@ -12,8 +12,9 @@ class FoodSlide extends StatefulWidget {
 class _FoodSlideState extends State<FoodSlide> {
   @override
   Widget build(BuildContext context) {
-    return   Container(
+    return Container(
       height: 230,
+      padding: EdgeInsets.only(left: 2, right: 2),
       width: double.infinity,
       child: ListView(
         scrollDirection: Axis.horizontal,
@@ -30,9 +31,7 @@ class _FoodSlideState extends State<FoodSlide> {
                       borderRadius: BorderRadius.circular(12),
                       image: DecorationImage(
                           image: Food.getAllFood().elementAt(0).imgPath,
-                          fit: BoxFit.cover
-                      )
-                  ),
+                          fit: BoxFit.cover)),
                 ),
                 YMargin(8),
                 Text(
@@ -60,9 +59,7 @@ class _FoodSlideState extends State<FoodSlide> {
                       borderRadius: BorderRadius.circular(12),
                       image: DecorationImage(
                           image: Food.getAllFood().elementAt(1).imgPath,
-                          fit: BoxFit.cover
-                      )
-                  ),
+                          fit: BoxFit.cover)),
                 ),
                 YMargin(8),
                 Text(
