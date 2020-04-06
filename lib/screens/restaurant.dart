@@ -55,170 +55,172 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
           // padding to the sliver grid
           SliverPadding(
             padding: EdgeInsets.only(left: 10.0, right: 10.0),
-            sliver: SliverGrid.count(
-              crossAxisCount: 2,
-              mainAxisSpacing: 15,
-              crossAxisSpacing: 15,
-              childAspectRatio: 0.73,
-              children: <Widget>[
-                // only one grid is clickable
-                GestureDetector(
-                  child: FoodItemGrid(2),
-                  onTap: () {
-                    showModalBottomSheet(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(18),
-                              topRight: Radius.circular(18))),
-                      context: context,
-                      builder: (context) => ListView(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            padding: EdgeInsets.fromLTRB(15, 25, 15, 30),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  height: 180,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      image: DecorationImage(
-                                          image: Food.getAllFood()
-                                              .elementAt(2)
-                                              .imgPath,
-                                          fit: BoxFit.cover)),
-                                ),
-                                YMargin(8),
-                                Text(
-                                  Food.getAllFood().elementAt(2).name,
-                                  style: tStyle(
-                                      color: kPrimaryColor,
-                                      size: 22,
-                                      weight: 6),
-                                ),
-                                YMargin(7),
-                                Text(
-                                  'NGN ${Food.getAllFood().elementAt(2).price}',
-                                  style: tStyle(
-                                      color: kFaded, size: 20, weight: 2),
-                                ),
-                                YMargin(8),
-                                Text(
-                                  'Ut placet, inquam tum dicere exorsus est et dolorum fuga et negent satis esse albam, dulce mel quorum facta quem modo dixi, constituto, ut aliquid ex ea quid iudicat.',
-                                  style: tStyle(
-                                      color: kPrimaryColor,
-                                      size: 12,
-                                      weight: 2),
-                                ),
-                                Divider(
-                                  color: kPrimaryColor,
-                                ),
-                                Container(
-                                  height: 60,
-                                  width: screenWidth(context),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      IconButton(
-                                        icon: Icon(
-                                          Icons.add,
-                                          color: kPrimaryColor,
-                                          size: 25,
-                                        ),
-                                        onPressed: () {},
-                                      ),
-                                      XMargin(20),
-                                      Text(
-                                        '2',
-                                        style: tStyle(
-                                            size: 30, color: kFaded, weight: 6),
-                                      ),
-                                      XMargin(20),
-                                      IconButton(
-                                        icon: Icon(
-                                          Icons.remove,
-                                          color: kPrimaryColor,
-                                          size: 25,
-                                        ),
-                                        onPressed: () {},
-                                      ),
-                                    ],
+            sliver: SliverGrid(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 15,
+                crossAxisSpacing: 15,
+                childAspectRatio: 0.71,
+              ),
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  return GestureDetector(
+                    onTap: () {
+
+                      // bottom sheet goes here
+                      showModalBottomSheet(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(18),
+                                topRight: Radius.circular(18))),
+                        context: context,
+                        builder: (context) => ListView(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              padding: EdgeInsets.fromLTRB(15, 25, 15, 30),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Container(
+                                    height: 180,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(15),
+                                        image: DecorationImage(
+                                            image: Food.getAllFood()
+                                                .elementAt(2)
+                                                .imgPath,
+                                            fit: BoxFit.cover)),
                                   ),
-                                ),
-                                Container(
-                                  height: 60,
-                                  width: screenWidth(context),
-                                  child: Row(
-                                    children: <Widget>[
-                                      Expanded(
-                                        child: GestureDetector(
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(10),
-                                                  bottomLeft:
-                                                      Radius.circular(10)),
-                                              color: kOrange,
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                'Add to otder',
-                                                style: tStyle(
-                                                  size: 16,
-                                                  color: kPrimaryColor,
-                                                  weight: 6,
+                                  YMargin(8),
+                                  Text(
+                                    Food.getAllFood().elementAt(2).name,
+                                    style: tStyle(
+                                        color: kPrimaryColor,
+                                        size: 22,
+                                        weight: 6),
+                                  ),
+                                  YMargin(7),
+                                  Text(
+                                    'NGN ${Food.getAllFood().elementAt(2).price}',
+                                    style: tStyle(
+                                        color: kFaded, size: 20, weight: 2),
+                                  ),
+                                  YMargin(8),
+                                  Text(
+                                    'Ut placet, inquam tum dicere exorsus est et dolorum fuga et negent satis esse albam, dulce mel quorum facta quem modo dixi, constituto, ut aliquid ex ea quid iudicat.',
+                                    style: tStyle(
+                                        color: kPrimaryColor,
+                                        size: 12,
+                                        weight: 2),
+                                  ),
+                                  Divider(
+                                    color: kPrimaryColor,
+                                  ),
+                                  Container(
+                                    height: 60,
+                                    width: screenWidth(context),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        IconButton(
+                                          icon: Icon(
+                                            Icons.add,
+                                            color: kPrimaryColor,
+                                            size: 25,
+                                          ),
+                                          onPressed: () {},
+                                        ),
+                                        XMargin(20),
+                                        Text(
+                                          '2',
+                                          style: tStyle(
+                                              size: 30,
+                                              color: kFaded,
+                                              weight: 6),
+                                        ),
+                                        XMargin(20),
+                                        IconButton(
+                                          icon: Icon(
+                                            Icons.remove,
+                                            color: kPrimaryColor,
+                                            size: 25,
+                                          ),
+                                          onPressed: () {},
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 60,
+                                    width: screenWidth(context),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Expanded(
+                                          child: GestureDetector(
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(10),
+                                                    bottomLeft:
+                                                        Radius.circular(10)),
+                                                color: kOrange,
+                                              ),
+                                              child: Center(
+                                                child: Text(
+                                                  'Add to otder',
+                                                  style: tStyle(
+                                                    size: 16,
+                                                    color: kPrimaryColor,
+                                                    weight: 6,
+                                                  ),
                                                 ),
                                               ),
                                             ),
+                                            onTap: () {
+                                              Navigator.of(context).pop();
+                                            },
                                           ),
-                                          onTap: () {
-                                            Navigator.of(context).pop();
-                                          },
                                         ),
-                                      ),
-                                      Container(
-                                        width: screenWidth(context) * 0.4,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.only(
-                                              topRight: Radius.circular(10),
-                                              bottomRight: Radius.circular(10)),
-                                          color: kPrimaryColor,
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            'NGN 7,000',
-                                            style: tStyle(
-                                              size: 16,
-                                              color: Colors.white,
-                                              weight: 6,
+                                        Container(
+                                          width: screenWidth(context) * 0.4,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                                topRight: Radius.circular(10),
+                                                bottomRight:
+                                                    Radius.circular(10)),
+                                            color: kPrimaryColor,
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              'NGN 7,000',
+                                              style: tStyle(
+                                                size: 16,
+                                                color: Colors.white,
+                                                weight: 6,
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-
-                // the rest of the grid which aren't clickable
-                FoodItemGrid(3),
-                FoodItemGrid(4),
-                FoodItemGrid(5),
-                FoodItemGrid(2),
-                FoodItemGrid(3),
-                FoodItemGrid(4),
-                FoodItemGrid(5),
-              ],
+                          ],
+                        ),
+                      );
+                    },
+                    child: FoodItemGrid(index + 2),
+                  );
+                },
+                childCount: Food.getAllFood().length - 2,
+              ),
             ),
           ),
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:landmarkeat/components/foodgriditem.dart';
 import 'package:landmarkeat/components/foodslide.dart';
+import 'package:landmarkeat/model/food.dart';
 import 'package:landmarkeat/utils/colors.dart';
 import 'package:landmarkeat/utils/margin.dart';
 import 'package:landmarkeat/utils/resolution.dart';
@@ -143,23 +144,38 @@ class _HomeScreenState extends State<HomeScreen> {
         // grid view goes here
         SliverPadding(
           padding: EdgeInsets.only(left: 15.0, right: 15.0),
-          sliver: SliverGrid.count(
-            crossAxisCount: 2,
-            mainAxisSpacing: 15,
-            crossAxisSpacing: 15,
-            childAspectRatio: 0.71,
-            children: <Widget>[
-              // food item components
-              FoodItemGrid(2),
-              FoodItemGrid(3),
-              FoodItemGrid(4),
-              FoodItemGrid(5),
-              FoodItemGrid(2),
-              FoodItemGrid(3),
-            ],
+          sliver: SliverGrid(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 15,
+              crossAxisSpacing: 15,
+              childAspectRatio: 0.71,
+            ),
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return FoodItemGrid(index+2);
+              },
+              childCount: Food.getAllFood().length - 2,
+            ),
           ),
         ),
       ],
     );
   }
 }
+
+//SliverGrid.count(
+//crossAxisCount: 2,
+//mainAxisSpacing: 15,
+//crossAxisSpacing: 15,
+//childAspectRatio: 0.71,
+//children: <Widget>[
+//// food item components
+//FoodItemGrid(2),
+//FoodItemGrid(3),
+//FoodItemGrid(4),
+//FoodItemGrid(5),
+//FoodItemGrid(2),
+//FoodItemGrid(3),
+//],
+//),
