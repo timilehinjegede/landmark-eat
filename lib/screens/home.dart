@@ -12,6 +12,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String dropDownValue = 'Select prefered restaurant';
+  String text;
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -74,26 +77,51 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(8),
                         color: Colors.blue[100],
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            'Select prefered restaurant',
-                            style: tStyle(
-                                size: 15, color: kPrimaryColor, weight: 6),
-                          ),
-                          IconButton(
-                            icon: Icon(
-                              Icons.keyboard_arrow_down,
-                              color: kPrimaryColor,
-                              size: 28,
+                      child: Center(
+                        child: DropdownButton<String>(
+                          value: dropDownValue,
+                          icon: Expanded(
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Icon(
+                                Icons.keyboard_arrow_down,
+                                color: Colors.blue,
+                                size: 30,
+                              ),
                             ),
-                            onPressed: () {},
                           ),
-                        ],
+                          iconSize: 24,
+                          elevation: 16,
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600),
+                          underline: Container(
+                            height: 0,
+                            color: Colors.transparent,
+                          ),
+                          onChanged: (String newValue) {
+                            setState(() {
+                              dropDownValue = newValue;
+                            });
+                          },
+                          items: <String>[
+                            'Select prefered restaurant',
+                            'Spur Restaurant',
+                            'Chop now now',
+                            'Thor Restaurant',
+                            'Chop before before'
+                          ].map((String value) {
+                            return new DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
                       ),
                     ),
                   ),
+
                   YMargin(20),
 
                   // food slide goes here
