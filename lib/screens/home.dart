@@ -153,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
-                return FoodItemGrid(index+2);
+                return FoodItemGrid(index + 2);
               },
               childCount: Food.getAllFood().length - 2,
             ),
@@ -163,19 +163,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
-//SliverGrid.count(
-//crossAxisCount: 2,
-//mainAxisSpacing: 15,
-//crossAxisSpacing: 15,
-//childAspectRatio: 0.71,
-//children: <Widget>[
-//// food item components
-//FoodItemGrid(2),
-//FoodItemGrid(3),
-//FoodItemGrid(4),
-//FoodItemGrid(5),
-//FoodItemGrid(2),
-//FoodItemGrid(3),
-//],
-//),
