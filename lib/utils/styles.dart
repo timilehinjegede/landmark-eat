@@ -21,3 +21,19 @@ TextStyle tStyle({double size, int weight, Color color}) => TextStyle(
                                       ? FontWeight.w800
                                       : weight == 9 ? FontWeight.w900 : null,
     );
+
+
+final kTitleStyle = TextStyle(
+    color: Colors.white,
+    fontFamily: 'CM Sans Serif',
+    fontSize: 26.0,
+    fontWeight: FontWeight.w700,
+);
+
+final kSubtitleStyle =
+TextStyle(color: Colors.white, fontSize: 15.0, fontWeight: FontWeight.w600);
+
+final bTextStyle = TextStyle(
+  color: Colors.black,
+  fontWeight: FontWeight.bold,
+);

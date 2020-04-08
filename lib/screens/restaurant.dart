@@ -251,7 +251,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.pushNamed(context, '/order');
+                          Navigator.pushNamed(context, '/success');
                         },
                         child: Text(
                           'Proceed to checkout',
